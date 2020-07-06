@@ -1,0 +1,14 @@
+service\impl\UserServiceImpl.class
+service\impl\LoginServiceImpl.class
+service\UserService.class
+dao\UserDao.class
+dao\impl\ChatRecordDaoImpl.class
+utils\JDBCUtils.class
+Servlet\FriendUserServlet.class
+dao\impl\UserDaoImpl.class
+Servlet\LoginServlet.class
+Servlet\UserServlet.class
+domain\ChatRecord.class
+domain\User.class
+dao\ChatRecordDao.class
+service\LoginService.class

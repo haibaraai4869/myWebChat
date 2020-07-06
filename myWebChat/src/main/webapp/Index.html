@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+<meta charset="UTF-8">
+<title>Title</title>
+<script src="js/jquery-3.3.1.js"></script>
+<script src="js/angular.min.js"></script>
+<script>
+    let lis;
+    $(function () {
+        let  str=window.location.search.substring(1);//取地址参数部分
+        let strs = str.split("=");
+         //let chatname = getParameter("chatname");
+         //let username = getParameter("username");
+        let username = strs[1];
+        $("#user").html("尊敬的"+username);
+
+
+        $.get("UserServlet",{"username":username},function (result) {
+            let obj = JSON.parse(result);
+            let username2 = obj[0].username2;
+            lis="<div id='0_div' onclick='operateFriend(0)'>"+username2+"</div>";
+            let i;
+            for (i = 1; i < 2; i++) {
+                let username2 = obj[i].username2;
+                lis+="<div id='1_div' onclick='operateFriend()'>"+username2+"</div>";
+            }
+            $("#friendList").html(lis);
+        })
+    })
+
+    function addFriend() {
+        window.location.href="AddFriend.html";
+    }
+
+    function operateFriend(i) {
+        /*alert(1);
+        alert(this.text());*/
+        $("#operateFriend").remove();
+        if(i==0){
+            $("#0_div").html($("#0_div").text()+"<div id='operateFriend'></div>")
+        }
+        if(i==1){
+            $("#1_div").html($("#1_div").text()+"<div id='operateFriend'></div>")
+        }
+        $("#operateFriend").html("<button id='callFriend' onclick='callFriend()'>发送消息</button>"
+          +"<button id='delFriend' onclick='delFriend()'>删除好友</button>")
+    }
+
+    function delFriend() {
+     alert("删除了好友");
+
+    }
+    function callFriend() {
+
+    }
+
+</script>
+<body>
+<div id="user" ></div>
+<h2>欢迎使用myWebChat</h2>
+<div>好友列表</div>
+<div id="friendList"></div>
+<div id="operateFriend"></div>
+<button id="addFriend" onclick="addFriend()">添加好友</button>
+</body>
+</html>
