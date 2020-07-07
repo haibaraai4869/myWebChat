@@ -5,50 +5,82 @@
 <script src="js/jquery-3.3.1.js"></script>
 <script src="js/angular.min.js"></script>
 <script>
-    let lis;
+    let lis;//拼接列表字符串
+    let username1;//当前用户用户名
+    let num;//好友数量
+
     $(function () {
         let  str=window.location.search.substring(1);//取地址参数部分
         let strs = str.split("=");
          //let chatname = getParameter("chatname");
          //let username = getParameter("username");
-        let username = strs[1];
-        $("#user").html("尊敬的"+username);
+        username1 = strs[1];
+        $("#user").html("尊敬的"+username1);
 
+        num=friendNum();
+        //alert(num);
 
-        $.get("UserServlet",{"username":username},function (result) {
+        $.get("UserServlet",{"username":username1},function (result) {
             let obj = JSON.parse(result);
             let username2 = obj[0].username2;
-            lis="<div id='0_div' onclick='operateFriend(0)'>"+username2+"</div>";
+            //alert(username2);
+           /* lis="<li id='0_div' onclick='operateFriend(0)'>"+username2+"</li>";
             let i;
             for (i = 1; i < 2; i++) {
                 let username2 = obj[i].username2;
-                lis+="<div id='1_div' onclick='operateFriend()'>"+username2+"</div>";
+                lis+="<li id='1_div' onclick='operateFriend()'>"+username2+"</li>";
+            }
+            $("#friendList").html(lis);*/
+
+            for (let i = 0; i < num; i++) {
+                let username2 = obj[i].username2;
+                lis+="<li class='li' onclick='operateFriend(this)'>"+username2+"</li>";
             }
             $("#friendList").html(lis);
+
         })
+
+
+
+
+
     })
 
+    function friendNum() {
+        $.get("FriendUserServlet/countFriend",{"username1":username1},function (result) {
+            num=result;
+        })
+    }
     function addFriend() {
-        window.location.href="AddFriend.html";
+        window.location.href="AddFriend.html?username1="+username1;
     }
 
-    function operateFriend(i) {
-        /*alert(1);
-        alert(this.text());*/
+    function operateFriend(obj) {
+
+        //alert($(obj).text());
         $("#operateFriend").remove();
-        if(i==0){
-            $("#0_div").html($("#0_div").text()+"<div id='operateFriend'></div>")
-        }
-        if(i==1){
-            $("#1_div").html($("#1_div").text()+"<div id='operateFriend'></div>")
-        }
-        $("#operateFriend").html("<button id='callFriend' onclick='callFriend()'>发送消息</button>"
-          +"<button id='delFriend' onclick='delFriend()'>删除好友</button>")
+
+        /*$(".li").each(function (index,e) {
+              if($(e).text()==$(obj).text()){
+
+              }
+        })*/
+
+        $(obj).html($(obj).text()+"<div id='operateFriend'></div>");
+
+        $("#operateFriend").html("<div><input id='callFriend' type='button' value='发送消息' onclick='callFriend(this.parentNode)'>"+"<Label style='display: none'>"+$(obj).text()+"</Label>"+"</div>"
+          +"<div><input id='delFriend' value='删除好友' type='button' onclick='delFriend(this.parentNode)'>"+"<Label style='display: none'>"+$(obj).text()+"</Label>"+"</div>")
     }
 
-    function delFriend() {
-     alert("删除了好友");
+    function delFriend(obj) {
+     //alert($(obj).text());
 
+        $.get("FriendUserServlet/deleteByUsername",{"username1":username1,"username2":$(obj).text()},function (result) {
+             if(result==true)
+                 alert("删除好友成功");
+             else
+                 alert("删除好友失败")
+        })
     }
     function callFriend() {
 
@@ -59,8 +91,10 @@
 <div id="user" ></div>
 <h2>欢迎使用myWebChat</h2>
 <div>好友列表</div>
-<div id="friendList"></div>
+<friendList id="friendList"></friendList>
 <div id="operateFriend"></div>
 <button id="addFriend" onclick="addFriend()">添加好友</button>
+<li class="1">a</li>
+<li class="1">b</li>
 </body>
 </html>

@@ -44,30 +44,40 @@ public class UserDaoImpl implements UserDao {
         }
     }
 
-
-/*    @Override
-    public List<User> findAllFriend(List<String> username2s) {
-
+    @Override
+    public boolean addUserByUsername(String username1,String username2) {
         try {
-            List<User> allFriend = null;
-            String sql = "select * from user where username = ?";
-            for (String username2 : username2s) {
-                User user = (User) jt.query(sql, new BeanPropertyRowMapper<User>(User.class), username2);
-                allFriend.add(user);
-            }
-            return allFriend;
-        } catch (DataAccessException e) {
-            throw new RuntimeException(e);
+            String sql ="insert into chatRecord (username1,username2) values (?,?)";
+            jt.update(sql,username1,username2);
+            return true;
+        } catch (Exception e) {
+            return false;
         }
-    }*/
-
-    @Override
-    public void addUser(User user) {
-
     }
 
     @Override
-    public void delUser(User user) {
-
+    public boolean deleteUserByUsername(String username1, String username2) {
+        try {
+        String sql="delete from chatrecord where username1=? and username2 = ?";
+        jt.update(sql,username1,username2);
+        return true;
+    } catch (Exception e) {
+        return false;
     }
+ }
+
+    @Override
+    public int countFriendByUsername(String username1) {
+        try {
+            String sql="select count(*) from chatrecord where username1 = ?";
+            Integer friendNum = jt.queryForObject(sql,Integer.class, username1);
+            return friendNum;
+        } catch (DataAccessException e) {
+            return 0;
+        }
+    }
+
+
+
+
 }

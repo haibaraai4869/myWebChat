@@ -13,8 +13,10 @@ public interface UserDao {
     List<ChatRecord> findAllRelation(String username1);
 
 
+    boolean addUserByUsername(String username1,String username2);
 
-    void addUser(User user);
 
-    void delUser(User user);
+    boolean deleteUserByUsername(String username1, String username2);
+
+    int countFriendByUsername(String username1);
 }

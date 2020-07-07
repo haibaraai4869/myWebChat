@@ -3,9 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script>
+        let userName2;
+        let userName1;
+       $(function () {
+           let  str=window.location.search.substring(1);//取地址参数部分
+           let strs = str.split("=");
+           //let chatname = getParameter("chatname");
+           //let username = getParameter("username");
+           userName1 = strs[1];
+       })
+        function checkStart() {
+             let checkMethod = $("#checkMethod option:selected");
+             //alert(checkMethod.val());
+
+            if(checkMethod.val()=='用户名查询'){
+                //alert("用户名查询中...");
+                $.get("FriendUserServlet/checkByUsername",{"checkUsername":$("#checkName").val()},function (result) {
+                    //alert(result.username);
+                    userName2 = result.username;
+                    $("#checkUsersList").html(result.username+"<button id='addUser' onclick='addUserByUsername()'>添加</button>");
+                })
+            }
+            if(checkMethod.val()=='昵称模糊查询'){
+                //alert("昵称模糊查询中...");
+                $.get("FriendUserServlet",{},function (resultList) {
+
+                })
+            }
+        }
+
+       function addUserByUsername(){
+           $.get("FriendUserServlet/addByUsername",{"username1":userName1,"username2":userName2},function (result) {
+                 $("#addUser").html("已添加为好友");
+           })
+       }
+    </script>
 </head>
+
 <body>
    <!--通过用户名模糊查询-->
+   <input type="text" id="checkName">
+   <select id="checkMethod">
+       <option id="checkByUsername">用户名查询</option>
+       <option id="checkByChatName">昵称模糊查询</option>
+   </select>
+   <br>
+<button id="CheckStart" onclick="checkStart()">查询</button>
+<div id="checkUsersList">
 
+</div>
 </body>
 </html>
