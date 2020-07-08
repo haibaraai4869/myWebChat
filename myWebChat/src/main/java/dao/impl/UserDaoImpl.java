@@ -3,6 +3,7 @@ package dao.impl;
 import dao.UserDao;
 import domain.ChatRecord;
 import domain.User;
+import domain.UsernamePicPathMap;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -77,7 +78,46 @@ public class UserDaoImpl implements UserDao {
         }
     }
 
+    @Override
+    public List<User> findByChatName(String chatName) {
+        try {
+            String like_charName="%"+chatName+"%";
+            String sql="select * from user where chatName like ?";
+            List<User> foundUsers = jt.query(sql, new BeanPropertyRowMapper<User>(User.class), like_charName);
+            return foundUsers;
+        } catch (DataAccessException e) {
+            return null;
+        }
+    }
 
+    @Override
+    public String findPicPathByUsername(String username) {
+        try {
+            String sql="select imag from user_imag where username = ?";
+            String foundPath = jt.queryForObject(sql, String.class, username);
+            return foundPath;
+        } catch (DataAccessException e) {
+            return null;
+        }
+    }
+
+    @Override
+    public void addPicPathBbyUsername(String username) {
+        String sql="insert into user_imag (username,imag) values(?,'picture/v2-92dea83c07770c3195c762148a5d4ba0_b.jpg')";
+        jt.update(sql,username);
+    }
+
+    @Override
+    public void updateUserInfo(String username, String reChatName, String rePassword) {
+        String sql="update User set  chatname = ? ,password = ? where username = ?";
+        jt.update(sql,reChatName,rePassword,username);
+    }
+
+    @Override
+    public void updatePicPathByUsername(String username, String rePicPath) {
+        String sql="update user_imag set imag = ? where username = ?";
+        jt.update(sql,rePicPath,username);
+    }
 
 
 }

@@ -2,6 +2,7 @@ package dao;
 
 import domain.ChatRecord;
 import domain.User;
+import domain.UsernamePicPathMap;
 
 import java.util.List;
 
@@ -19,4 +20,14 @@ public interface UserDao {
     boolean deleteUserByUsername(String username1, String username2);
 
     int countFriendByUsername(String username1);
+
+    List<User> findByChatName(String chatName);
+
+    String findPicPathByUsername(String username);
+
+    void addPicPathBbyUsername(String username);
+
+    void updateUserInfo(String username, String reChatName, String rePassword);
+
+    void updatePicPathByUsername(String username, String rePicPath);
 }

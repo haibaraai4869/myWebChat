@@ -49,7 +49,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/picture" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -62,16 +62,18 @@
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\haibaraai4869\Desktop\新建文件夹 (2)\javaweb\ProSource\myWebCha\myWebChat\src\main\resources" />
-      <recent name="C:\Users\haibaraai4869\Desktop\新建文件夹 (2)\javaweb\ProSource\myWebCha\myWebChat\src\main\webapp\WEB-INF" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\haibaraai4869\Desktop\新建文件夹 (2)\javaweb\ProSource\myWebCha\myWebChat\src\main\webapp" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="servlet.base" />
       <recent name="utils" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\haibaraai4869\Desktop\新建文件夹 (2)\javaweb\ProSource\myWebCha\myWebChat\src\main\webapp\picture" />
       <recent name="C:\Users\haibaraai4869\Desktop\新建文件夹 (2)\javaweb\ProSource\myWebCha\myWebChat\src\main\webapp" />
+      <recent name="C:\Users\haibaraai4869\Desktop\新建文件夹 (2)\javaweb\ProSource\myWebCha\myWebChat\src\main\resources" />
+      <recent name="C:\Users\haibaraai4869\Desktop\新建文件夹 (2)\javaweb\ProSource\myWebCha\myWebChat\src\main\webapp\WEB-INF" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -92,6 +94,7 @@
       <workItem from="1593941111193" duration="11010000" />
       <workItem from="1594021034738" duration="10335000" />
       <workItem from="1594031701789" duration="30956000" />
+      <workItem from="1594192822436" duration="21589000" />
     </task>
     <servers />
   </component>
@@ -111,10 +114,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="272" y="28" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog/0.0.1280.680@0.0.1280.680" timestamp="1594024211257" />
-    <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser" timestamp="1594128012277">
+    <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser" timestamp="1594215083218">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1594128012277" />
+    <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1594215083218" />
     <state x="233" y="0" key="#项目结构" timestamp="1593950349144">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -123,33 +126,33 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1594128866956" />
-    <state width="1237" height="122" key="GridCell.Tab.0.bottom" timestamp="1594136339015">
+    <state width="1237" height="113" key="GridCell.Tab.0.bottom" timestamp="1594215159060">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="122" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1594136339015" />
-    <state width="1237" height="122" key="GridCell.Tab.0.center" timestamp="1594136339015">
+    <state width="1237" height="113" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1594215159060" />
+    <state width="1237" height="113" key="GridCell.Tab.0.center" timestamp="1594215159059">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="122" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1594136339015" />
-    <state width="1237" height="122" key="GridCell.Tab.0.left" timestamp="1594136339015">
+    <state width="1237" height="113" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1594215159059" />
+    <state width="1237" height="113" key="GridCell.Tab.0.left" timestamp="1594215159059">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="122" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1594136339015" />
-    <state width="1237" height="122" key="GridCell.Tab.0.right" timestamp="1594136339015">
+    <state width="1237" height="113" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1594215159059" />
+    <state width="1237" height="113" key="GridCell.Tab.0.right" timestamp="1594215159060">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="122" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1594136339015" />
+    <state width="1237" height="113" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1594215159060" />
     <state x="142" y="0" key="SettingsEditor" timestamp="1594030586720">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1594030586720" />
-    <state x="297" y="151" width="672" height="677" key="run.anything.popup" timestamp="1594128869868">
+    <state x="297" y="151" width="672" height="677" key="run.anything.popup" timestamp="1594215159093">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="297" y="151" width="672" height="677" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1594128869868" />
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1594108518400">
+    <state x="297" y="151" width="672" height="677" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1594215159093" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1594211936363">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1594108518400" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1594211936363" />
   </component>
 </project>

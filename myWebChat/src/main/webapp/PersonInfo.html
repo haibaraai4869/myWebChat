@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改个人信息</title>
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script>
+        let username;
+       $(function () {
+               let  str=window.location.search.substring(1);//取地址参数部分
+               let strs = str.split("=");
+               username = strs[1];
+               //alert(username);
+           $.get("UserServlet/findUser",{"username":username},function (result){
+
+              $("#chatName").attr("placeholder",result.chatname);
+               $("#code").attr("placeholder",result.password);
+           })
+       })
+      function sub(){
+           $.get("UserServlet/PersonInfoChange",{"username":username,"chatName":$("#chatName").val(),"password":$("#code").val()},function (result) {
+
+           })
+      }
+    </script>
+</head>
+<body>
+<form id="personInfo">
+    <h1 style="color: brown">个人信息修改</h1>
+    <br><br>
+    昵称：<input id="chatName" name="chatName" type="text" placeholder="" width="50" height="30" style="color: #2e6da4">
+    <br><br>
+    密码：<input id="code" name="password" type="text" placeholder="" width="50" height="30" style="color: #2e6da4">
+    <br><br>
+    <input type="button" style="color: #3c763d" width="60" height="60" value="提交修改"  onclick="sub()">
+</form>
+</body>
+</html>

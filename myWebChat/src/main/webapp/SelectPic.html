@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加头像</title>
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script>
+        let username;
+        $(function () {
+            let  str=window.location.search.substring(1);//取地址参数部分
+            let strs = str.split("=");
+            username = strs[1];
+            //alert(username);
+        })
+        function pic(pn) {
+            let picPath;
+           if(pn=1){
+               picPath = $("#p1").attr("src");
+            }
+            if(pn=2){
+                picPath = $("#p2").attr("src");
+            }
+            if(pn=3){
+                picPath = $("#p3").attr("src");
+            }
+            if(pn=4){
+                picPath = $("#p4").attr("src");
+            }
+
+            $.get("UserServlet/updatePicPath",{"username":username,"picPath":picPath},function (result) {
+
+                       alert("修改头像成功")
+                   
+            })
+        }
+    </script>
+</head>
+<body>
+<div><h2 style="color: #1b6d85" onclick="pic(1)">使用头像1</h2><img id="p1" width="200" height="200" src="picture/005PA2DHly1fr3qx85vh9j31kw2d3x6s.jpg"></div>
+<div><h2 style="color: #3c763d" onclick="pic(2)">使用头像2</h2><img id="p2" width="200" height="200" src="picture/99c7d93b5bb5c9eaeb8aff04df39b6003bf3b3be.png"></div>
+<div><h2 style="color: #122b40" onclick="pic(3)">使用头像3</h2><img id="p3" width="200" height="200" src="picture/bb2dbe5d7939d5dd7afe121ac11fa795_hd.jpg"></div>
+<div><h2 style="color: red" onclick="pic(4)">使用头像4</h2><img id="p4" width="200" height="200" src="picture/69feecf9d72a60594c95ae882934349b013bba88.jpg"></div>
+</body>
+</html>

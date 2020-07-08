@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet("/FriendUserServlet/*")
 public class FriendUserServlet extends BaseServlet {
@@ -33,7 +34,15 @@ public class FriendUserServlet extends BaseServlet {
     /**
      * 通过昵称模糊查找用户
      */
-    protected void addByChatName(HttpServletRequest request,HttpServletResponse response){
+    protected void checkByChatName(HttpServletRequest request,HttpServletResponse response) throws IOException {
+        System.out.println("访问到了addByChatNameServlet");
+        String chatName = request.getParameter("checkChatName");
+        UserService service = new UserServiceImpl();
+
+        List<User> foundUsers = service.findByChatName(chatName);
+        ObjectMapper mapper = new ObjectMapper();
+        response.setContentType("application/json;charset=utf-8");
+        mapper.writeValue(response.getOutputStream(),foundUsers);
 
     }
 

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <meta charset="UTF-8">
-<title>Title</title>
+<title>好友列表</title>
 <script src="js/jquery-3.3.1.js"></script>
 <script src="js/angular.min.js"></script>
 <script>
@@ -20,7 +20,7 @@
         num=friendNum();
         //alert(num);
 
-        $.get("UserServlet",{"username":username1},function (result) {
+        $.get("UserServlet/findAllRelations",{"username":username1},function (result) {
             let obj = JSON.parse(result);
             let username2 = obj[0].username2;
             //alert(username2);
@@ -34,15 +34,20 @@
 
             for (let i = 0; i < num; i++) {
                 let username2 = obj[i].username2;
-                lis+="<li class='li' onclick='operateFriend(this)'>"+username2+"</li>";
+                lis+="<li class='li' onclick='operateFriend(this)'>"+"<img height='30' width='40' src=''>"+username2+"</li>";
             }
             $("#friendList").html(lis);
 
-        })
+            $("#friendList").find("li").each(function (index,e) {
+                   //alert($(e).text());  //想使用标签体对象时切记一定要加上$(x)，长长记性上过n次当了已经
+              $.get("UserServlet/findPicPath",{"username":$(e).text()},function (result) {
+                  //alert(result);
+                  $($(e).children()).attr("src",result);
+                  //可以一次性查询完再一个个匹配减少数据库交互次数，不过暂时先不优化了
+              })
 
-
-
-
+            })
+         })
 
     })
 
@@ -65,11 +70,14 @@
 
               }
         })*/
+        let picPath = $(obj).children().attr("src");//再重写li标签前先获取子节点<img>的src
+        $(obj).html("<img height='30' width='40' src=''>"+$(obj).text()+"<a id='operateFriend'></a>");
+        $(obj).children().attr("src",picPath);//再写回去
+        $("#operateFriend").html("<a><input id='callFriend' type='button' style='color: #3c763d' value='发送消息' onclick='callFriend(this.parentNode)'>"+"<Label style='display: none'>"+$(obj).text()+"</Label>"+"</a>"
+          +"<a><input id='delFriend' value='删除好友' style='color: #761c19' type='button' onclick='delFriend(this.parentNode)'>"+"<Label style='display: none'>"+$(obj).text()+"</Label>"+"</a>")
 
-        $(obj).html($(obj).text()+"<div id='operateFriend'></div>");
+        //alert($(obj).children("img").attr("src"));
 
-        $("#operateFriend").html("<div><input id='callFriend' type='button' value='发送消息' onclick='callFriend(this.parentNode)'>"+"<Label style='display: none'>"+$(obj).text()+"</Label>"+"</div>"
-          +"<div><input id='delFriend' value='删除好友' type='button' onclick='delFriend(this.parentNode)'>"+"<Label style='display: none'>"+$(obj).text()+"</Label>"+"</div>")
     }
 
     function delFriend(obj) {
@@ -82,6 +90,11 @@
                  alert("删除好友失败")
         })
     }
+
+    function personCenter() {
+        window.location.href="PersonCenter.html?username1="+username1;
+    }
+
     function callFriend() {
 
     }
@@ -93,8 +106,8 @@
 <div>好友列表</div>
 <friendList id="friendList"></friendList>
 <div id="operateFriend"></div>
-<button id="addFriend" onclick="addFriend()">添加好友</button>
-<li class="1">a</li>
-<li class="1">b</li>
+<button type="button" style="color: #9acfea" onclick="addFriend()">添加好友</button>
+<button type="button" style="color: #2e6da4" onclick="personCenter()">个人中心</button>
+
 </body>
 </html>

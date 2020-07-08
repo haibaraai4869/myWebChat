@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>添加好友</title>
     <script src="js/jquery-3.3.1.js"></script>
     <script src="js/angular.min.js"></script>
     <script>
@@ -24,13 +24,18 @@
                 $.get("FriendUserServlet/checkByUsername",{"checkUsername":$("#checkName").val()},function (result) {
                     //alert(result.username);
                     userName2 = result.username;
-                    $("#checkUsersList").html(result.username+"<button id='addUser' onclick='addUserByUsername()'>添加</button>");
+                    $("#checkUsersList").html("<li>"+result.username+"</li>"+"<button id='addUser' onclick='addUserByUsername()'>添加</button>");
                 })
             }
-            if(checkMethod.val()=='昵称模糊查询'){
+            else {//昵称模糊查询
                 //alert("昵称模糊查询中...");
-                $.get("FriendUserServlet",{},function (resultList) {
-
+                $.get("FriendUserServlet/checkByChatName",{"checkChatName":$("#checkName").val()},function (resultList) {
+                     let lis;
+                      $.each(resultList,function (index,e) {
+                           //alert(e.username)
+                          lis+="<li class='li'>"+e.chatname+"<Label class='label' style='display: none'>"+e.username+"</Label>"+"<button id='addUser' onclick='addUserByChatName(this)'>添加</button>"+"</li>";
+                          $("#checkUsersList").html(lis);
+                      })
                 })
             }
         }
@@ -40,6 +45,20 @@
                  $("#addUser").html("已添加为好友");
            })
        }
+
+        function addUserByChatName(obj){
+           let brotherNode = $(obj).prev();
+           //let fatherNode = $(obj).parent();
+           //alert(brotherNode.text());
+            let username2 = brotherNode.text();
+            $.get("FriendUserServlet/addByUsername",{"username1":userName1,"username2":username2},function (result) {
+                $(obj).html("已添加为好友");
+            })
+
+            $.get("UserServlet/addPicPath",{"username":username2},function (result) {
+                $(obj).html("已添加为好友");
+            })
+        }
     </script>
 </head>
 

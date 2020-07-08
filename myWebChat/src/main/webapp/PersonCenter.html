@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人中心</title>
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script>
+        let username;
+        $(function () {
+            let  str=window.location.search.substring(1);//取地址参数部分
+            let strs = str.split("=");
+            username = strs[1];
+            //alert(username);
+        })
+
+        function PersonInfo() {
+           window.location.href="PersonInfo.html?username="+username;
+        }
+
+        function SelectPic() {
+            window.location.href="SelectPic.html?username="+username;
+        }
+    </script>
+</head>
+<body>
+
+<div><h2 style="color: #1b6d85" onclick="PersonInfo()">修改密码</h2></div>
+<div><h2 style="color: #3c763d" onclick="PersonInfo()">修改昵称</h2></div>
+<div><h2 style="color: #122b40" onclick="SelectPic()">添加头像</h2></div>
+
+</body>
+</html>

@@ -1,5 +1,6 @@
 service\impl\UserServiceImpl.class
 Servlet\base\BaseServlet.class
+domain\UsernamePicPathMap.class
 service\impl\LoginServiceImpl.class
 service\UserService.class
 dao\UserDao.class
