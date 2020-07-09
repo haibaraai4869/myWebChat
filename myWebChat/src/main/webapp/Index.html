@@ -91,12 +91,12 @@
         })
     }
 
-    function personCenter() {
-        window.location.href="PersonCenter.html?username1="+username1;
+    function callFriend(obj) {
+        window.location.href="ChatWindow.html?username1="+username1+"&username2="+$(obj).text();
     }
 
-    function callFriend() {
-
+    function personCenter() {
+        window.location.href="PersonCenter.html?username1="+username1;
     }
 
 </script>

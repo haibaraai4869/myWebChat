@@ -1,6 +1,7 @@
 package dao;
 
 import domain.ChatRecord;
+import domain.CorrespondRecord;
 import domain.User;
 import domain.UsernamePicPathMap;
 
@@ -30,4 +31,6 @@ public interface UserDao {
     void updateUserInfo(String username, String reChatName, String rePassword);
 
     void updatePicPathByUsername(String username, String rePicPath);
+
+
 }

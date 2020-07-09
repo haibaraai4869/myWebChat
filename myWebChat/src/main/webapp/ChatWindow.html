@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>聊天框</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="js/angular.min.js"></script>
+    <style type="text/css">
+        .talk_con{
+            width:600px;
+            height:500px;
+            border:1px solid #666;
+            margin:50px auto 0;
+            background:#f9f9f9;
+        }
+        .talk_show{
+            width:580px;
+            height:420px;
+            border:1px solid #666;
+            background:#fff;
+            margin:10px auto 0;
+            overflow:auto;
+
+        }
+        .talk_input{
+            width:580px;
+            margin:10px auto 0;
+        }
+
+        .talk_word{
+            width:420px;
+            height:26px;
+            padding:0px;
+            float:left;
+            margin-left:10px;
+            outline:none;
+            text-indent:10px;
+        }
+        .talk_sub{
+            width:56px;
+            height:30px;
+            float:left;
+            margin-left:10px;
+        }
+        .atalk{
+            margin:10px;
+        }
+        .atalk span{
+            display:inline-block;
+            background: green;
+            border-radius:10px;
+            color:#fff;
+            padding:5px 10px;
+        }
+        .btalk{
+            margin:10px;
+            text-align:right;
+        }
+        .btalk span{
+            display:inline-block;
+            background:#0181cc;
+            border-radius:10px;
+            color:#fff;
+            padding:5px 10px;
+        }
+    </style>
+
+    <script>
+
+
+        function GetQueryString(name)
+        {
+            let reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+            let r = window.location.search.substr(1).match(reg);
+            if(r!=null)return  unescape(r[2]); return null;
+        }//从网上找的接收参数的方法懒得一个个切割字符串
+        let username1;
+        let username2;
+        $(function () {
+           username1 = GetQueryString("username1");
+           username2 = GetQueryString("username2");
+            requestBack();
+        })
+        function requestBack() {
+            setTimeout(requestBack, 15000);
+            $("#words").html("");
+
+            $.get("CorrespServlet/checkChatRecords",{"username1":username1,"username2":username2},function (result) {
+                let lis="";
+                $.each(result,function (index,e){
+                    //alert(e.chatRecord);
+                    if(e.senduser==username1){
+                        lis+="<div class='btalk'><span id='asay'>"+e.chatRecord+"</span></div>";
+                    }
+                    if(e.senduser==username2){
+                        lis+="<div class='atalk'><span id='asay'>"+e.chatRecord+"</span></div>";
+                    }
+                })
+                $("#words").html($("#words").html()+lis);
+            })
+            $("#words").scrollTop=$("#words").scrollHeight;
+        }
+
+        function subword() {
+            //alert(1);
+            let date = new Date();
+            let dateStr="";
+            let month=date.getMonth()+1;//亲测js获取月份比当前月份少一个月
+            dateStr+=date.getFullYear();
+            dateStr+="-"+month;
+            dateStr+="-"+date.getDate();
+            dateStr+=" "+date.getHours();
+            dateStr+=":"+date.getMinutes();
+            dateStr+=":"+date.getSeconds();
+            //alert(dateStr);日期格式自己拼
+            let word = $("#talkwords").val();
+            $("#words").html($("#words").html()+"<div class='btalk'><span id='asay'>"+$("#talkwords").val()+"</span></div>");
+            $.get("CorrespServlet/addChatRecords",{"senduser":username1,"acceptuser":username2,
+                "chatTime":dateStr,"chatRecord":word},function (result) {
+
+            })
+        }
+    </script>
+</head>
+<body>
+<div class="talk_con">
+    <div class="talk_show" id="words">
+
+    </div>
+    <div class="talk_input">
+        <input type="text" class="talk_word" id="talkwords">
+        <input type="button" value="发送" class="talk_sub" id="talksub" onclick="subword()">
+    </div>
+</div>
+</body>
+</html>
