@@ -69,6 +69,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void updateUserInfo(String username, String reChatName, String rePassword) {
         UserDao userDao = new UserDaoImpl();
+        userDao.findUserByUsername(username);
         userDao.updateUserInfo(username,reChatName,rePassword);
     }
 

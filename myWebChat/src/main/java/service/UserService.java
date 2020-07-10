@@ -29,4 +29,6 @@ public interface UserService {
     void updatePicPathByUsername(String username, String rePicPath);
 
     void addExchangeFriend(String username1, String username2);
+
+
 }

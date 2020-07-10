@@ -103,7 +103,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void addPicPathBbyUsername(String username) {
-        String sql="insert into user_imag (username,imag) values(?,'picture/v2-92dea83c07770c3195c762148a5d4ba0_b.jpg')";
+        String sql="replace into user_imag (username,imag) values(?,'picture/v2-92dea83c07770c3195c762148a5d4ba0_b.jpg') ";
         jt.update(sql,username);
     }
 
@@ -136,6 +136,18 @@ public class UserDaoImpl implements UserDao {
             jt.update(sql,username2,username1);
 
         } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void register(String reqUsername, String reqPassword, String reChatname) {
+        try {
+            String sql ="insert into user (username,password,chatname) values (?,?,?)";
+            jt.update(sql,reqUsername,reqPassword,reChatname);
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 

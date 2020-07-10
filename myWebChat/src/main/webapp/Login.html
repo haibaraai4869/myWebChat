@@ -11,7 +11,7 @@
     <script>
 
         function sub() {
-                $.post("LoginServlet",$("#LoginForm").serialize(),function (result) {
+                $.post("LoginServlet/login",$("#LoginForm").serialize(),function (result) {
                     //alert(result);
                     if(result != null){
                         $("#LoginInfo").html("用户查询成功");
@@ -26,6 +26,9 @@
                 });
             }
 
+            function register() {
+              location.href="Register.html";
+            }
 
 
     </script>
@@ -35,7 +38,8 @@
     <form id="LoginForm" name="LoginForm">
         <div><input id="username" name="username" type="text"></div>
         <div><input id="password" name="password" type="password"></div>
-        <div><button id="submit" type="button" onclick="sub()">登录</button></div>
+        <div><button id="submit" type="button" onclick="sub()">登录</button>
+            <button type="button" onclick="register()">注册</button></div>
     </form>
     <div id="LoginInfo"></div>
 

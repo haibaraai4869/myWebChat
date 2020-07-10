@@ -36,4 +36,6 @@ public interface UserDao {
     void addExchangeFriend1(String username1, String username2);
 
     void addExchangeFriend2(String username2, String username1);
+
+    void register(String reqUsername, String reqPassword, String reChatname);
 }

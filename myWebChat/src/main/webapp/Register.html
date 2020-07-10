@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script>
+        function sub() {
+            $.post("LoginServlet/register",$("#RegisterForm").serialize(),function (result) {
+                alert(result);
+                if(result){
+                    window.location.href='Login.html';
+                }
+                else {
+                    $("#RegisterInfo").html("用户名重复");
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+
+<form id="RegisterForm">
+    <div>用户名：<input id="username" name="username" type="text"></div>
+    <div>密码：<input id="password" name="password" type="password"></div>
+    <div>昵称：<input id="chatname" name="chatname" type="text"></div>
+    <div><button id="submit" type="button" onclick="sub()">注册</button></div>
+</form>
+<div id="RegisterInfo"></div>
+</form>
+</body>
+</html>
