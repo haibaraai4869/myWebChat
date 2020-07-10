@@ -41,6 +41,7 @@
         }
 
        function addUserByUsername(){
+
            $.get("FriendUserServlet/addByUsername",{"username1":userName1,"username2":userName2},function (result) {
                  $("#addUser").html("已添加为好友");
            })

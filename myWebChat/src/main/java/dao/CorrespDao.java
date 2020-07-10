@@ -1,5 +1,6 @@
 package dao;
 
+import domain.ChatRecord;
 import domain.CorrespondRecord;
 
 import java.util.List;
@@ -9,4 +10,5 @@ public interface CorrespDao {
 
     void addChatRecords(String senduser, String acceptuser, String chatTime, String chatRecord);
 
+    List<ChatRecord> getAllFriendRequest(String username2);
 }

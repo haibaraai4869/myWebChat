@@ -92,4 +92,18 @@ public class UserServlet extends BaseServlet {
         response.setContentType("application/json;charset=utf-8");
         mapper.writeValue(response.getOutputStream(),null);
     }
+
+    protected void requestConform(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        System.out.println("访问到了requestConform");
+        String username = request.getParameter("username");
+        String reChatName = request.getParameter("chatName");
+        String rePassword = request.getParameter("password");
+
+        UserService service = new UserServiceImpl();
+        service.updateUserInfo(username,reChatName,rePassword);
+
+        ObjectMapper mapper = new ObjectMapper();
+        response.setContentType("application/json;charset=utf-8");
+        mapper.writeValue(response.getOutputStream(),null);
+    }
 }

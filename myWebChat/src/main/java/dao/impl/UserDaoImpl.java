@@ -37,7 +37,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     public List<ChatRecord> findAllRelation(String username1) {
         try {
-            String sql="select * from chatrecord where username1 = ?";
+            String sql="select * from chatrecord where username1 = ? and requestConform = 'Y'";
             List<ChatRecord> relationList = jt.query(sql, new BeanPropertyRowMapper<ChatRecord>(ChatRecord.class), username1);
             return relationList;
         } catch (DataAccessException e) {
@@ -59,8 +59,8 @@ public class UserDaoImpl implements UserDao {
     @Override
     public boolean deleteUserByUsername(String username1, String username2) {
         try {
-        String sql="delete from chatrecord where username1=? and username2 = ?";
-        jt.update(sql,username1,username2);
+        String sql="delete from chatrecord where username1=? and username2 = ? or username1 = ? and username2 = ?";
+        jt.update(sql,username1,username2,username2,username1);
         return true;
     } catch (Exception e) {
         return false;
@@ -117,6 +117,26 @@ public class UserDaoImpl implements UserDao {
     public void updatePicPathByUsername(String username, String rePicPath) {
         String sql="update user_imag set imag = ? where username = ?";
         jt.update(sql,rePicPath,username);
+    }
+
+    @Override
+    public void addExchangeFriend1(String username1, String username2) {
+        try {
+            String sql ="update chatRecord set requestConform = 'Y' where username1 = ? and username2 = ?";
+            jt.update(sql,username1,username2);
+        } catch (Exception e) {
+           throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void addExchangeFriend2(String username2, String username1) {
+        try {
+            String sql ="insert into chatRecord (username1,username2,requestConform) values (?,?,'Y')";
+            jt.update(sql,username2,username1);
+
+        } catch (Exception e) {
+        }
     }
 
 

@@ -21,6 +21,25 @@
         function SelectPic() {
             window.location.href="SelectPic.html?username="+username;
         }
+
+       function permit(obj){
+           $(obj).attr("value","已同意");
+           $(obj).attr("disabled",true);
+           //alert($(obj).parent().text())
+           $.get("FriendUserServlet/conformRelation",{"username1":$(obj).parent().text(),"username2":username},function (result) {
+
+           })
+       }
+
+        $(function () {
+            let lis="";
+            $.get("CorrespServlet/checkFriendRequest",{"username":username},function (resultList) {
+                $.each(resultList,function (index,e) {
+                      lis+="<div>"+e.username1+"<input type='button' onclick='permit(this)' value='同意'></div>"
+                  })
+                $("#requestList").html(lis);
+            })
+        })
     </script>
 </head>
 <body>
@@ -28,6 +47,11 @@
 <div><h2 style="color: #1b6d85" onclick="PersonInfo()">修改密码</h2></div>
 <div><h2 style="color: #3c763d" onclick="PersonInfo()">修改昵称</h2></div>
 <div><h2 style="color: #122b40" onclick="SelectPic()">添加头像</h2></div>
+
+<div>请求好友消息</div>
+<div id="requestList">
+
+</div>
 
 </body>
 </html>

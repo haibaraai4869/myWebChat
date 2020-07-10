@@ -90,4 +90,17 @@ public class FriendUserServlet extends BaseServlet {
         response.setContentType("application/json;charset=utf-8");
         mapper.writeValue(response.getOutputStream(),friendNum);
     }
+
+    protected void conformRelation(HttpServletRequest request,HttpServletResponse response) throws IOException {
+        System.out.println("访问到了conformRelation");
+        String username1 = request.getParameter("username1");
+        String username2 = request.getParameter("username2");
+
+        UserService service = new UserServiceImpl();
+        service.addExchangeFriend(username1,username2);
+
+        ObjectMapper mapper = new ObjectMapper();
+        response.setContentType("application/json;charset=utf-8");
+        mapper.writeValue(response.getOutputStream(),null);
+    }
 }

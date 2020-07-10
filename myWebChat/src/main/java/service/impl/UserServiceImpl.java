@@ -77,4 +77,11 @@ public class UserServiceImpl implements UserService {
         UserDao userDao = new UserDaoImpl();
         userDao.updatePicPathByUsername(username,rePicPath);
     }
+
+    @Override
+    public void addExchangeFriend(String username1, String username2) {
+        UserDao userDao = new UserDaoImpl();
+        userDao.addExchangeFriend1(username1,username2);
+        userDao.addExchangeFriend2(username2,username1);
+    }
 }

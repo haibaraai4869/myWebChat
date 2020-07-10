@@ -27,4 +27,6 @@ public interface UserService {
     void updateUserInfo(String username, String reChatName, String rePassword);
 
     void updatePicPathByUsername(String username, String rePicPath);
+
+    void addExchangeFriend(String username1, String username2);
 }

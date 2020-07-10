@@ -4,6 +4,7 @@ import dao.CorrespDao;
 import dao.UserDao;
 import dao.impl.CorrespDaoImpl;
 import dao.impl.UserDaoImpl;
+import domain.ChatRecord;
 import domain.CorrespondRecord;
 import service.CorrespService;
 
@@ -22,5 +23,12 @@ public class CorrespServiceImpl implements CorrespService {
     public void addChatRecords(String senduser, String acceptuser, String chatTime, String chatRecord) {
         CorrespDao correspdao = new CorrespDaoImpl();
         correspdao.addChatRecords(senduser,acceptuser,chatTime,chatRecord);
+    }
+
+    @Override
+    public List<ChatRecord> getAllFriendRequest(String username2) {
+        CorrespDao correspdao = new CorrespDaoImpl();
+        List<ChatRecord> allFriendRequest = correspdao.getAllFriendRequest(username2);
+        return allFriendRequest;
     }
 }
