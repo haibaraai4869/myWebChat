@@ -1,7 +1,7 @@
 package servlet;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import domain.ChatRecord;
+import domain.UserRelation;
 import domain.CorrespondRecord;
 import service.CorrespService;
 import service.impl.CorrespServiceImpl;
@@ -51,7 +51,7 @@ public class CorrespServlet extends BaseServlet {
         String username2 = request.getParameter("username");
 
         CorrespService service = new CorrespServiceImpl();
-        List<ChatRecord> allFriendRequest = service.getAllFriendRequest(username2);
+        List<UserRelation> allFriendRequest = service.getAllFriendRequest(username2);
         System.out.println(allFriendRequest);
 
         ObjectMapper mapper = new ObjectMapper();

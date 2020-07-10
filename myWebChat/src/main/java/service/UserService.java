@@ -1,14 +1,13 @@
 package service;
 
-import domain.ChatRecord;
+import domain.UserRelation;
 import domain.User;
-import domain.UsernamePicPathMap;
 
 import java.util.List;
 
 
 public interface UserService {
-    List<ChatRecord> findAllRelation(String username1);
+    List<UserRelation> findAllRelation(String username1);
 
     User findUserByUsername(String username);
 

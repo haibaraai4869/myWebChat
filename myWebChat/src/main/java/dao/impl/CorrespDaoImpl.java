@@ -1,14 +1,13 @@
 package dao.impl;
 
 import dao.CorrespDao;
-import domain.ChatRecord;
+import domain.UserRelation;
 import domain.CorrespondRecord;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import utils.JDBCUtils;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CorrespDaoImpl implements CorrespDao {
@@ -25,15 +24,19 @@ public class CorrespDaoImpl implements CorrespDao {
 
     @Override
     public void addChatRecords(String senduser, String acceptuser, String chatTime, String chatRecord) {
-        String sql="insert into correspInfo (senduser,acceptuser,chatTime,chatRecord) values (?,?,?,?)";
-        jt.update(sql,senduser,acceptuser,chatTime,chatRecord);
+        try {
+            String sql="insert into correspInfo (senduser,acceptuser,chatTime,chatRecord) values (?,?,?,?)";
+            jt.update(sql,senduser,acceptuser,chatTime,chatRecord);
+        } catch (DataAccessException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
-    public List<ChatRecord> getAllFriendRequest(String username2) {
+    public List<UserRelation> getAllFriendRequest(String username2) {
         try {
-            String sql="select * from chatRecord where username2 = ? and requestConform is NULL";
-            List<ChatRecord> foundRequest = jt.query(sql, new BeanPropertyRowMapper<ChatRecord>(ChatRecord.class), username2);
+            String sql="select * from userRelation where username2 = ? and requestConform is NULL";
+            List<UserRelation> foundRequest = jt.query(sql, new BeanPropertyRowMapper<UserRelation>(UserRelation.class), username2);
             return foundRequest;
         } catch (DataAccessException e) {
             throw new RuntimeException(e);

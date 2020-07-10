@@ -8,6 +8,16 @@
    <!--千万不要引用错了目录啊啊啊啊啊啊啊啊啊啊！！！！-->
     <script src="js/jquery-3.3.1.js"></script>
     <script src="js/angular.min.js"></script>
+    <style type="text/css">
+        .div{
+            width: 220px;
+            height: auto;
+            border-radius: 20px;
+            background: #9acfea;
+            margin: 150px;
+        }
+
+    </style>
     <script>
 
         function sub() {
@@ -35,12 +45,13 @@
 </head>
 <body>
 <div>
-    <form id="LoginForm" name="LoginForm">
-        <div><input id="username" name="username" type="text"></div>
-        <div><input id="password" name="password" type="password"></div>
-        <div><button id="submit" type="button" onclick="sub()">登录</button>
-            <button type="button" onclick="register()">注册</button></div>
+    <form id="LoginForm" name="LoginForm" class="div">
+        <div><input id="username" name="username" type="text" style="margin: 25px" placeholder="Please input username"></div>
+        <div><input id="password" name="password" type="password" style="margin: 25px" placeholder="Please input password"></div>
+        <div><button id="submit" type="button" onclick="sub()" style="margin: 25px">登录</button>
+            <button type="button" onclick="register()" style="margin: 25px">注册</button></div>
     </form>
+
     <div id="LoginInfo"></div>
 
 </div>

@@ -2,7 +2,7 @@ package servlet;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import domain.ChatRecord;
+import domain.UserRelation;
 import domain.User;
 import net.sf.json.JSONArray;
 import service.UserService;
@@ -11,7 +11,6 @@ import servlet.base.BaseServlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -26,15 +25,14 @@ public class UserServlet extends BaseServlet {
         String username1 = request.getParameter("username");
 
         System.out.println(username1);
-        List<ChatRecord> friendList = service.findAllRelation(username1);
+        List<UserRelation> friendList = service.findAllRelation(username1);
         System.out.println(friendList);
 
-        JSONArray jsonFriendList=JSONArray.fromObject(friendList);
-        System.out.println(jsonFriendList.toString());
+
 
         ObjectMapper mapper = new ObjectMapper();
         response.setContentType("application/json;charset=utf-8");
-        mapper.writeValue(response.getOutputStream(),jsonFriendList.toString());
+        mapper.writeValue(response.getOutputStream(),friendList);
     }
 
     protected void findPicPath(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -60,8 +58,13 @@ public class UserServlet extends BaseServlet {
     }
 
     protected void updatePicPath(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        System.out.println("访问到了updatepicpath");
         String username = request.getParameter("username");
         String rePicPath = request.getParameter("picPath");
+
+        System.out.println(username);
+        System.out.println(rePicPath);
+
         UserService service = new UserServiceImpl();
         service.updatePicPathByUsername(username,rePicPath);
 

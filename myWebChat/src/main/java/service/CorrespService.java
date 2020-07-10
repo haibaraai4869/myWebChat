@@ -1,6 +1,6 @@
 package service;
 
-import domain.ChatRecord;
+import domain.UserRelation;
 import domain.CorrespondRecord;
 
 import java.util.List;
@@ -10,5 +10,5 @@ public interface CorrespService {
 
     void addChatRecords(String senduser, String acceptuser, String chatTime, String chatRecord);
 
-    List<ChatRecord> getAllFriendRequest(String username2);
+    List<UserRelation> getAllFriendRequest(String username2);
 }

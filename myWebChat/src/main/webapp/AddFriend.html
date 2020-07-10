@@ -5,6 +5,15 @@
     <title>添加好友</title>
     <script src="js/jquery-3.3.1.js"></script>
     <script src="js/angular.min.js"></script>
+    <style type="text/css">
+        .div{
+            width: 290px;
+            height: auto;
+            border-radius: 20px;
+            background: #9acfea;
+            margin: 150px;
+        }
+    </style>
     <script>
         let userName2;
         let userName1;
@@ -30,7 +39,7 @@
             else {//昵称模糊查询
                 //alert("昵称模糊查询中...");
                 $.get("FriendUserServlet/checkByChatName",{"checkChatName":$("#checkName").val()},function (resultList) {
-                     let lis;
+                     let lis="";
                       $.each(resultList,function (index,e) {
                            //alert(e.username)
                           lis+="<li class='li'>"+e.chatname+"<Label class='label' style='display: none'>"+e.username+"</Label>"+"<button id='addUser' onclick='addUserByChatName(this)'>添加</button>"+"</li>";
@@ -64,6 +73,7 @@
 </head>
 
 <body>
+<div class="div">
    <!--通过用户名模糊查询-->
    <input type="text" id="checkName">
    <select id="checkMethod">
@@ -73,7 +83,7 @@
    <br>
 <button id="CheckStart" onclick="checkStart()">查询</button>
 <div id="checkUsersList">
-
+</div>
 </div>
 </body>
 </html>

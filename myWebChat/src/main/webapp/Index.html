@@ -4,8 +4,21 @@
 <title>好友列表</title>
 <script src="js/jquery-3.3.1.js"></script>
 <script src="js/angular.min.js"></script>
+
+    <style type="text/css">
+        .div{
+        width: 260px;
+        height: auto;
+        border-radius: 20px;
+        background: #9acfea;
+        margin: 50px;
+
+    }
+
+    </style>
+
 <script>
-    let lis;//拼接列表字符串
+    let lis=" ";//拼接列表字符串
     let username1;//当前用户用户名
     let num;//好友数量
 
@@ -17,25 +30,17 @@
         username1 = strs[1];
         $("#user").html("尊敬的"+username1);
 
-        num=friendNum();
+        //num=friendNum();
         //alert(num);
 
-        $.get("UserServlet/findAllRelations",{"username":username1},function (result) {
-            let obj = JSON.parse(result);
-            let username2 = obj[0].username2;
-            //alert(username2);
-           /* lis="<li id='0_div' onclick='operateFriend(0)'>"+username2+"</li>";
-            let i;
-            for (i = 1; i < 2; i++) {
-                let username2 = obj[i].username2;
-                lis+="<li id='1_div' onclick='operateFriend()'>"+username2+"</li>";
-            }
-            $("#friendList").html(lis);*/
+        $.get("UserServlet/findAllRelations",{"username":username1},function (resultList) {
+            $.each(resultList,function (index,e) {
+                let username2 = e.username2;
+                //alert(e.username2);
+                lis+="<li class='li' onclick='operateFriend(this)' style='font-style:italic'>"+"<img height='30' width='40' src=''>"+username2+"</li>";
+            })
 
-            for (let i = 0; i < num; i++) {
-                let username2 = obj[i].username2;
-                lis+="<li class='li' onclick='operateFriend(this)'>"+"<img height='30' width='40' src=''>"+username2+"</li>";
-            }
+
             $("#friendList").html(lis);
 
             $("#friendList").find("li").each(function (index,e) {
@@ -103,9 +108,10 @@
 <body>
 <div id="user" ></div>
 <h2>欢迎使用myWebChat</h2>
-<div>好友列表</div>
+<div class="div">好友列表
 <friendList id="friendList"></friendList>
 <div id="operateFriend"></div>
+</div>
 <button type="button" style="color: #9acfea" onclick="addFriend()">添加好友</button>
 <button type="button" style="color: #2e6da4" onclick="personCenter()">个人中心</button>
 

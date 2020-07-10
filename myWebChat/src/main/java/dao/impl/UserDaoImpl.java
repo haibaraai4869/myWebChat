@@ -1,9 +1,7 @@
 package dao.impl;
 
 import dao.UserDao;
-import domain.ChatRecord;
 import domain.User;
-import domain.UsernamePicPathMap;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -33,51 +31,6 @@ public class UserDaoImpl implements UserDao {
             return null;
         }
     }
-
-    @Override
-    public List<ChatRecord> findAllRelation(String username1) {
-        try {
-            String sql="select * from chatrecord where username1 = ? and requestConform = 'Y'";
-            List<ChatRecord> relationList = jt.query(sql, new BeanPropertyRowMapper<ChatRecord>(ChatRecord.class), username1);
-            return relationList;
-        } catch (DataAccessException e) {
-            return null;
-        }
-    }
-
-    @Override
-    public boolean addUserByUsername(String username1,String username2) {
-        try {
-            String sql ="insert into chatRecord (username1,username2) values (?,?)";
-            jt.update(sql,username1,username2);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
-    @Override
-    public boolean deleteUserByUsername(String username1, String username2) {
-        try {
-        String sql="delete from chatrecord where username1=? and username2 = ? or username1 = ? and username2 = ?";
-        jt.update(sql,username1,username2,username2,username1);
-        return true;
-    } catch (Exception e) {
-        return false;
-    }
- }
-
-    @Override
-    public int countFriendByUsername(String username1) {
-        try {
-            String sql="select count(*) from chatrecord where username1 = ?";
-            Integer friendNum = jt.queryForObject(sql,Integer.class, username1);
-            return friendNum;
-        } catch (DataAccessException e) {
-            return 0;
-        }
-    }
-
     @Override
     public List<User> findByChatName(String chatName) {
         try {
@@ -103,8 +56,13 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void addPicPathBbyUsername(String username) {
-        String sql="replace into user_imag (username,imag) values(?,'picture/v2-92dea83c07770c3195c762148a5d4ba0_b.jpg') ";
-        jt.update(sql,username);
+        try {
+            String sql="insert into user_imag (username,imag) values(?,'picture/@MDR3503(]DU$RZJL}{ZD2H.png')";
+            jt.update(sql,username);
+        } catch (DataAccessException e) {
+           throw new RuntimeException(e);
+            //当username设置为主键时，不允许插入相同username数据
+        }
     }
 
     @Override
@@ -115,30 +73,15 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void updatePicPathByUsername(String username, String rePicPath) {
-        String sql="update user_imag set imag = ? where username = ?";
-        jt.update(sql,rePicPath,username);
-    }
-
-    @Override
-    public void addExchangeFriend1(String username1, String username2) {
         try {
-            String sql ="update chatRecord set requestConform = 'Y' where username1 = ? and username2 = ?";
-            jt.update(sql,username1,username2);
-        } catch (Exception e) {
-           throw new RuntimeException(e);
+            String sql="replace into user_imag (username,imag) values(?,?)";
+            jt.update(sql,username,rePicPath);
+        } catch (DataAccessException e) {
+            System.out.println("修改异常");
         }
     }
 
-    @Override
-    public void addExchangeFriend2(String username2, String username1) {
-        try {
-            String sql ="insert into chatRecord (username1,username2,requestConform) values (?,?,'Y')";
-            jt.update(sql,username2,username1);
 
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     @Override
     public void register(String reqUsername, String reqPassword, String reChatname) {

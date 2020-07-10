@@ -89,6 +89,7 @@
 
             $.get("CorrespServlet/checkChatRecords",{"username1":username1,"username2":username2},function (result) {
                 let lis="";
+                let lastTime;
                 $.each(result,function (index,e){
                     //alert(e.chatRecord);
                     if(e.senduser==username1){
@@ -97,14 +98,18 @@
                     if(e.senduser==username2){
                         lis+="<div class='atalk'><span id='asay'>"+e.chatRecord+"</span></div>";
                     }
+
+                    lastTime=new Date(parseInt(e.chatTime)).toLocaleString();
                 })
                 $("#words").html($("#words").html()+lis);
+                $("#words").html($("#words").html()+"<div style='text-align:center' >"+lastTime+"</div>");
             })
-            $("#words").scrollTop=$("#words").scrollHeight;
+
         }
 
         function subword() {
             //alert(1);
+
             let date = new Date();
             let dateStr="";
             let month=date.getMonth()+1;//亲测js获取月份比当前月份少一个月
@@ -121,6 +126,7 @@
                 "chatTime":dateStr,"chatRecord":word},function (result) {
 
             })
+            $("#talkwords").val("");//清除输入框
         }
     </script>
 </head>
@@ -129,6 +135,7 @@
     <div class="talk_show" id="words">
 
     </div>
+
     <div class="talk_input">
         <input type="text" class="talk_word" id="talkwords">
         <input type="button" value="发送" class="talk_sub" id="talksub" onclick="subword()">

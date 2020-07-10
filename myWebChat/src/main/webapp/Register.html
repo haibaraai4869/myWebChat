@@ -5,11 +5,23 @@
     <title>注册</title>
     <script src="js/jquery-3.3.1.js"></script>
     <script src="js/angular.min.js"></script>
+    <style type="text/css">
+        .div{
+            width: 220px;
+            height: auto;
+            border-radius: 20px;
+            background: #9acfea;
+            margin: 150px;
+        }
+
+    </style>
     <script>
         function sub() {
+
             $.post("LoginServlet/register",$("#RegisterForm").serialize(),function (result) {
                 alert(result);
                 if(result){
+                    setDefaultPicPath();
                     window.location.href='Login.html';
                 }
                 else {
@@ -17,15 +29,20 @@
                 }
             });
         }
+        
+        function setDefaultPicPath() {
+            $.post("UserServlet/addPicPath",{"username":$("#username").val()},function (result) {
+            });
+        }
     </script>
 </head>
 <body>
 
-<form id="RegisterForm">
-    <div>用户名：<input id="username" name="username" type="text"></div>
-    <div>密码：<input id="password" name="password" type="password"></div>
-    <div>昵称：<input id="chatname" name="chatname" type="text"></div>
-    <div><button id="submit" type="button" onclick="sub()">注册</button></div>
+<form id="RegisterForm" class="div">
+    <div>用户名：<input id="username" name="username" type="text" style="margin: 25px" placeholder="Please input username"></div>
+    <div>密码：<input id="password" name="password" type="password" style="margin: 25px" placeholder="Please input password"></div>
+    <div>昵称：<input id="chatname" name="chatname" type="text" style="margin: 25px" placeholder="Please input chatname"></div>
+    <div><button id="submit" type="button" onclick="sub()" style="margin: 80px">注册</button></div>
 </form>
 <div id="RegisterInfo"></div>
 </form>

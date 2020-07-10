@@ -1,10 +1,8 @@
 package service.impl;
 
 import dao.CorrespDao;
-import dao.UserDao;
 import dao.impl.CorrespDaoImpl;
-import dao.impl.UserDaoImpl;
-import domain.ChatRecord;
+import domain.UserRelation;
 import domain.CorrespondRecord;
 import service.CorrespService;
 
@@ -26,9 +24,9 @@ public class CorrespServiceImpl implements CorrespService {
     }
 
     @Override
-    public List<ChatRecord> getAllFriendRequest(String username2) {
+    public List<UserRelation> getAllFriendRequest(String username2) {
         CorrespDao correspdao = new CorrespDaoImpl();
-        List<ChatRecord> allFriendRequest = correspdao.getAllFriendRequest(username2);
+        List<UserRelation> allFriendRequest = correspdao.getAllFriendRequest(username2);
         return allFriendRequest;
     }
 }

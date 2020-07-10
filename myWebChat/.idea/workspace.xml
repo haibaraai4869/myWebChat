@@ -62,22 +62,24 @@
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\haibaraai4869\Desktop\新建文件夹 (2)\javaweb\ProSource\myWebCha\myWebChat\src\main\webapp" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="servlet.base" />
-      <recent name="utils" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\haibaraai4869\Desktop\新建文件夹 (2)\javaweb\ProSource\myWebCha\myWebChat\src\main\webapp\picture" />
       <recent name="C:\Users\haibaraai4869\Desktop\新建文件夹 (2)\javaweb\ProSource\myWebCha\myWebChat\src\main\webapp" />
       <recent name="C:\Users\haibaraai4869\Desktop\新建文件夹 (2)\javaweb\ProSource\myWebCha\myWebChat\src\main\resources" />
       <recent name="C:\Users\haibaraai4869\Desktop\新建文件夹 (2)\javaweb\ProSource\myWebCha\myWebChat\src\main\webapp\WEB-INF" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="servlet.base" />
+      <recent name="utils" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\haibaraai4869\Desktop\新建文件夹 (2)\javaweb\ProSource\myWebCha\myWebChat\src\main\webapp\picture" />
+      <recent name="C:\Users\haibaraai4869\Desktop\新建文件夹 (2)\javaweb\ProSource\myWebCha\myWebChat\src\main\webapp" />
+    </key>
   </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
+      <command value="mvn clean" />
       <command value="mvn tomcat7:run" />
     </option>
   </component>
@@ -96,7 +98,7 @@
       <workItem from="1594031701789" duration="30956000" />
       <workItem from="1594192822436" duration="21888000" />
       <workItem from="1594278328134" duration="13919000" />
-      <workItem from="1594353089045" duration="10180000" />
+      <workItem from="1594353089045" duration="23864000" />
     </task>
     <servers />
   </component>
@@ -108,6 +110,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="371" y="96" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1280.680@0.0.1280.680" timestamp="1593951639448" />
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1594363686643">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1594363686643" />
     <state x="385" y="177" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1593953864782">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -116,10 +122,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="272" y="28" key="#com.intellij.ide.fileTemplates.ui.ConfigureTemplatesDialog/0.0.1280.680@0.0.1280.680" timestamp="1594024211257" />
-    <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser" timestamp="1594362069657">
+    <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser" timestamp="1594365249827">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1594362069657" />
+    <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1594365249827" />
     <state x="233" y="0" key="#项目结构" timestamp="1593950349144">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -128,30 +134,30 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1594128866956" />
-    <state width="1237" height="81" key="GridCell.Tab.0.bottom" timestamp="1594363095773">
+    <state width="1237" height="87" key="GridCell.Tab.0.bottom" timestamp="1594375954236">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="81" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1594363095773" />
-    <state width="1237" height="81" key="GridCell.Tab.0.center" timestamp="1594363095772">
+    <state width="1237" height="87" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1594375954236" />
+    <state width="1237" height="87" key="GridCell.Tab.0.center" timestamp="1594375954235">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="81" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1594363095772" />
-    <state width="1237" height="81" key="GridCell.Tab.0.left" timestamp="1594363095772">
+    <state width="1237" height="87" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1594375954235" />
+    <state width="1237" height="87" key="GridCell.Tab.0.left" timestamp="1594375954235">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="81" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1594363095772" />
-    <state width="1237" height="81" key="GridCell.Tab.0.right" timestamp="1594363095772">
+    <state width="1237" height="87" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1594375954235" />
+    <state width="1237" height="87" key="GridCell.Tab.0.right" timestamp="1594375954236">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="81" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1594363095772" />
-    <state x="142" y="0" key="SettingsEditor" timestamp="1594284722984">
+    <state width="1237" height="87" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1594375954236" />
+    <state x="142" y="0" key="SettingsEditor" timestamp="1594365509854">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1594284722984" />
-    <state x="297" y="151" width="672" height="677" key="run.anything.popup" timestamp="1594363095810">
+    <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1594365509854" />
+    <state x="297" y="151" width="672" height="677" key="run.anything.popup" timestamp="1594375954277">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="297" y="151" width="672" height="677" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1594363095810" />
+    <state x="297" y="151" width="672" height="677" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1594375954277" />
     <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1594356071976">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
