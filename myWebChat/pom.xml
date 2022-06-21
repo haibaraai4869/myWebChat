@@ -38,7 +38,7 @@
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
-      <version>8.0.18</version>
+      <version>8.0.28</version>
       <!--一定要与本地MySQL的版本相对应，如果版本相差太大是无法连接的-->
       <scope>compile</scope>
     </dependency>
